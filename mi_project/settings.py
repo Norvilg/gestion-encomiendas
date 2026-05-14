@@ -59,7 +59,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 # Context processor personalizado
-                'envios.context_processors.estadisticas_globales',
+                #'envios.context_processors.estadisticas_globales',
             ],
         },
     },

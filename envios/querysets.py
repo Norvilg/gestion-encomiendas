@@ -16,3 +16,11 @@ class EncomiendaQuerySet(models.QuerySet):
 
     def activas(self):
         return self.filter(estado__in=['PE', 'TR', 'DE'])
+
+    def con_relaciones(self):
+        return self.select_related(
+            'remitente',
+            'destinatario',
+            'ruta',
+            'empleado'
+        )

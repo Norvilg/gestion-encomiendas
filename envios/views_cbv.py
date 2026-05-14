@@ -1,4 +1,6 @@
 # envios/views_cbv.py
+from django.contrib import messages
+from django.shortcuts import redirect
 
 from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -6,7 +8,8 @@ from django.views.generic import (
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
-
+from mi_project.choices import EstadoEnvio
+from .models import Encomienda
 from .models import Encomienda
 from .forms import EncomiendaForm
 
@@ -64,10 +67,24 @@ class EncomiendaCreateView(
             kwargs={'pk': self.object.pk}
         )
 
+    #def form_valid(self, form):
+    #
+    #    empleado = Empleado.objects.get(
+    #        email=self.request.user.email
+    #    )
+    #
+    #    form.instance.empleado = empleado
+    #
+    #    return super().form_valid(form)
+
     def form_valid(self, form):
-        # Asignar el empleado antes de guardar
-        form.instance.empleado_registro = self.request.user.empleado
-        return super().form_valid(form)
+    
+        messages.warning(
+            self.request,
+            'La confirmación de encomiendas se encuentra en proceso de implementación.'
+        )
+    
+        return redirect('encomienda_lista')
 
 
 # ── UpdateView: formulario de edición ─────────────────────────────

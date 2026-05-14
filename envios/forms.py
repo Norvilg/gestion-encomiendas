@@ -4,8 +4,6 @@ from django import forms
 from .models import Encomienda
 from clientes.models import Cliente
 from rutas.models import Ruta
-from config.choices import EstadoGeneral
-
 
 class EncomiendaForm(forms.ModelForm):
     """Formulario para registrar una nueva encomienda"""
@@ -14,7 +12,7 @@ class EncomiendaForm(forms.ModelForm):
         model = Encomienda
 
         fields = [
-            'codigo', 'descripcion', 'peso_kg', 'volumen_cm3',
+            'codigo', 'descripcion', 'peso_kg', #'volumen_cm3',
             'remitente', 'destinatario', 'ruta',
             'costo_envio', 'fecha_entrega_est', 'observaciones',
         ]
@@ -32,10 +30,10 @@ class EncomiendaForm(forms.ModelForm):
                 'step': '0.01'
             }),
 
-            'volumen_cm3': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'step': '0.01'
-            }),
+            #'volumen_cm3': forms.NumberInput(attrs={
+            #    'class': 'form-control',
+            #    'step': '0.01'
+            #}),
 
             'remitente': forms.Select(attrs={
                 'class': 'form-select'
@@ -67,7 +65,7 @@ class EncomiendaForm(forms.ModelForm):
         labels = {
             'codigo': 'Código de encomienda',
             'peso_kg': 'Peso (kg)',
-            'volumen_cm3': 'Volumen (cm³)',
+            #'volumen_cm3': 'Volumen (cm³)',
             'fecha_entrega_est': 'Fecha estimada de entrega',
         }
 

@@ -25,7 +25,7 @@ def dashboard(request):
     context = { 
     'total_activas':   Encomienda.objects.activas().count(), 
     'en_transito':     Encomienda.objects.en_transito().count(),    
-    'con_retraso':     Encomienda.objects.con_retraso().count(),     
+    'con_retraso':0 ,  #Encomienda:  objects.con_retraso().count(),     
     'entregadas_hoy':  Encomienda.objects.filter( 
                             estado=EstadoEnvio.ENTREGADO, 
                             fecha_entrega_real=hoy).count(), 
